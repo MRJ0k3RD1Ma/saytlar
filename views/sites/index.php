@@ -31,7 +31,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'domain',
             'create_date',
-            'end_date',
+//            'end_date',
+            [
+                'attribute'=>'end_date',
+                'value'=>function($d){
+                    $datetime2 = date_create($d->end_date);
+                    $datetime1 = date_create(date('Y-m-d'));
+                    $interval = date_diff($datetime1, $datetime2);
+                    $ds = $interval->format('%R%a ');
+                    $class = '';
+                    if($ds <= 30){
+                        $class = "bg-warning";
+                    }
+                    if($ds < 0){
+                        $class = "bg-danger";
+                    }
+                    return "<span class='{$class}'>{$d->end_date}</span>";
+                }
+            ],
             'company',
             'phone',
             'executor',
