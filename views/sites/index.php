@@ -47,7 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         $class = "bg-danger";
                     }
                     return "<span class='{$class}'>{$d->end_date}</span>";
-                }
+                },
+                'format'=>'raw',
             ],
             'company',
             'phone',
