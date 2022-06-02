@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'domain')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'create_date')->textInput() ?>
+    <?= $form->field($model, 'create_date')->textInput(['type'=>'date']) ?>
 
-    <?= $form->field($model, 'end_date')->textInput() ?>
+    <?= $form->field($model, 'end_date')->textInput(['type'=>'date']) ?>
 
     <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
 
