@@ -43,12 +43,12 @@ class Sites extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'domain' => 'Domain',
-            'create_date' => 'Create Date',
-            'end_date' => 'End Date',
-            'company' => 'Company',
-            'phone' => 'Phone',
-            'executor' => 'Executor',
+            'domain' => 'Domen nomi',
+            'create_date' => 'Yaratilgan vaqti',
+            'end_date' => 'Tugash muddati',
+            'company' => 'Tashkilot nomi',
+            'phone' => 'Telefon raqami',
+            'executor' => 'Mas\'ul hodim',
         ];
     }
 }

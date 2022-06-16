@@ -9,4 +9,22 @@ require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 
 $config = require __DIR__ . '/../config/web.php';
 
+function prettyNumber($num){
+    $num = "{$num}";
+    $n="";
+    $t=strlen($num);
+    for($i=0; $i<$t; $i++){
+        if($i!=0 and $i%3==0){
+            $n.=' ';
+        }
+        $n .= $num[$t-$i-1];
+    }
+    $res = "";
+    $t = strlen($n);
+    for ($i=0; $i<$t; $i++){
+        $res .= $n[$t-$i-1];
+    }
+    return $res;
+}
+
 (new yii\web\Application($config))->run();

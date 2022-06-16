@@ -22,59 +22,28 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+<body id="page-top">
+    <style>
+        .summary {
+            display: none;
+        }
+    </style>
+    <?php $this->beginBody() ?>
+    <div id="wrapper">
+        <?php echo $this->render('sidebar') ?>
 
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Sites', 'url' => ['/sites/index']],
-            ['label' => 'Users', 'url' => ['/users/index']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->name . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-</header>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <?php echo $this->render('navbar') ?>
+                <div class="container-fluid">
+                    <?= Alert::widget() ?>
+                    <?= $content ?>
+                </div>
+            </div>
+        </div>
 
-<main role="main" class="flex-shrink-0">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</main>
 
-<footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>
